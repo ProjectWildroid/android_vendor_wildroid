@@ -8,4 +8,8 @@ ifeq ($(WILDROID_DISTRIBUTION_NAME),AOSP)
 # Overlays
 PRODUCT_PACKAGE_OVERLAYS += vendor/wildroid/overlay/tablet
 
+# Settings
+PRODUCT_PRODUCT_PROPERTIES += \
+    persist.settings.large_screen_opt.enabled=true
+
 endif
