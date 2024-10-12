@@ -41,6 +41,7 @@ function wildroid_apply_patches() {
 }
 
 function wildroid_export_variables() {
+    export LLVM_AOSP_PREBUILTS_VERSION=$(build/soong/scripts/get_clang_version.py)
     export SUPPORTS_INLINE_KERNEL_BUILDING=true
 }
 
