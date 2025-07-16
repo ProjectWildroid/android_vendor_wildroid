@@ -40,6 +40,10 @@ function wildroid_apply_patches() {
     fi
 }
 
+function wildroid_export_variables() {
+    export SUPPORTS_INLINE_KERNEL_BUILDING=true
+}
+
 function wildroid_identify_distribution() {
     if [ -d "vendor/lineage" ]; then
         if [ -f "vendor/lineage/release/release_configs/bp2a.textproto" ]; then
@@ -79,6 +83,7 @@ function wildroid_identify_distribution() {
     return 1
 }
 
+wildroid_export_variables
 wildroid_identify_distribution
 
 if [ -f "wildroid-patches-not-yet-applied.txt" ]; then
