@@ -270,7 +270,7 @@ ifneq ($(TARGET_KERNEL_CLANG_COMPILE), false)
 endif
 
 # Pass prebuilt LZ4 path
-KERNEL_MAKE_FLAGS += LZ4=$(BUILD_TOP)/prebuilts/kernel-build-tools/linux-x86/bin/lz4
+KERNEL_MAKE_FLAGS += LZ4=/usr/bin/lz4
 
 # Since Linux 4.16, flex and bison are required
 KERNEL_MAKE_FLAGS += LEX=$(BUILD_TOP)/prebuilts/build-tools/$(HOST_PREBUILT_TAG)/bin/flex
