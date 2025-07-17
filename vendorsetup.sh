@@ -15,7 +15,7 @@ function wildroid_apply_patches() {
 
     rm -f wildroid_apply_patches-failed.txt
 
-    local PATCHES_SUBDIRS=$(dirname $(find $PATCHES_ROOT_DIR -type f -name '*.patch') | sort -u | sed "s|^${PATCHES_ROOT_DIR}/||g")
+    local PATCHES_SUBDIRS=$(dirname $(find -L $PATCHES_ROOT_DIR -type f -name '*.patch') | sort -u | sed "s|^${PATCHES_ROOT_DIR}/||g")
     while IFS= read -r dir; do
         if ! cd $dir; then
             echo "Error: Failed to enter directory $dir"
