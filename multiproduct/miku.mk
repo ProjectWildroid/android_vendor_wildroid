@@ -3,6 +3,14 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+LOCAL_VARS_SUFFIX_LIST := \
+    AOSP_PRODUCTMK \
+    NAME \
+    TYPE
+
+$(foreach suffix,$(LOCAL_VARS_SUFFIX_LIST),\
+    $(eval WILDROID_MULTIPRODUCT_$(suffix) := $(WILDROID_MULTIPRODUCT.$(TARGET_PRODUCT).$(suffix))))
+
 include $(WILDROID_MULTIPRODUCT_AOSP_PRODUCTMK)
 
 MIKU_MASTER ?= $(WILDROID_BUILD_ID)

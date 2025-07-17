@@ -26,5 +26,16 @@ WILDROID_MULTIPRODUCT_SIZE ?= full
 WILDROID_MULTIPRODUCT_IS_GO ?= false
 WILDROID_MULTIPRODUCT_IS_WIFIONLY ?= false
 
+LOCAL_VARS_SUFFIX_LIST := \
+    AOSP_PRODUCTMK \
+    TYPE \
+    SIZE \
+    IS_GO \
+    IS_WIFIONLY \
+    NAME # must keep this at last
+
 $(foreach distro,$(LOCAL_DISTROS_TO_ADD),\
-    $(eval PRODUCT_MAKEFILES += $(distro)_$(WILDROID_MULTIPRODUCT_NAME):vendor/wildroid/multiproduct/$(distro).mk))
+    $(eval PRODUCT_MAKEFILES += $(distro)_$(WILDROID_MULTIPRODUCT_NAME):vendor/wildroid/multiproduct/$(distro).mk)\
+    $(foreach suffix,$(LOCAL_VARS_SUFFIX_LIST),\
+        $(eval WILDROID_MULTIPRODUCT.$(distro)_$(WILDROID_MULTIPRODUCT_NAME).$(suffix) := $(WILDROID_MULTIPRODUCT_$(suffix)))\
+        $(eval WILDROID_MULTIPRODUCT_$(suffix) :=)))

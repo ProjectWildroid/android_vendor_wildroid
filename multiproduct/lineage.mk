@@ -3,6 +3,17 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+LOCAL_VARS_SUFFIX_LIST := \
+    AOSP_PRODUCTMK \
+    NAME \
+    TYPE \
+    SIZE \
+    IS_GO \
+    IS_WIFIONLY
+
+$(foreach suffix,$(LOCAL_VARS_SUFFIX_LIST),\
+    $(eval WILDROID_MULTIPRODUCT_$(suffix) := $(WILDROID_MULTIPRODUCT.$(TARGET_PRODUCT).$(suffix))))
+
 include $(WILDROID_MULTIPRODUCT_AOSP_PRODUCTMK)
 
 TARGET_UNOFFICIAL_BUILD_ID ?= $(WILDROID_BUILD_ID)

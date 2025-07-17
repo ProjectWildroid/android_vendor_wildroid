@@ -30,7 +30,7 @@ WILDROID_MULTIPRODUCT_SKIP_DISTROS := lineage
 WILDROID_MULTIPRODUCT_TYPE := pc
 include vendor/wildroid/multiproduct/AndroidProductsHelper.mk
 
-WILDROID_MULTIPRODUCT_AOSP_PRODUCTMK := device/virt/virtio_arm64/aosp_virtio_arm64only.mk
+WILDROID_MULTIPRODUCT_AOSP_PRODUCTMK := device/virt/virtio_arm64only/aosp_virtio_arm64only.mk
 WILDROID_MULTIPRODUCT_IS_GO := false
 WILDROID_MULTIPRODUCT_IS_WIFIONLY := true
 WILDROID_MULTIPRODUCT_NAME := virtio_arm64only
@@ -39,7 +39,7 @@ WILDROID_MULTIPRODUCT_SKIP_DISTROS := lineage
 WILDROID_MULTIPRODUCT_TYPE := pc
 include vendor/wildroid/multiproduct/AndroidProductsHelper.mk
 
-WILDROID_MULTIPRODUCT_AOSP_PRODUCTMK := device/virt/virtio_arm64/aosp_virtio_arm64only_16k.mk
+WILDROID_MULTIPRODUCT_AOSP_PRODUCTMK := device/virt/virtio_arm64only/aosp_virtio_arm64only_16k.mk
 WILDROID_MULTIPRODUCT_IS_GO := false
 WILDROID_MULTIPRODUCT_IS_WIFIONLY := true
 WILDROID_MULTIPRODUCT_NAME := virtio_arm64only_16k
@@ -48,7 +48,7 @@ WILDROID_MULTIPRODUCT_SKIP_DISTROS := lineage
 WILDROID_MULTIPRODUCT_TYPE := pc
 include vendor/wildroid/multiproduct/AndroidProductsHelper.mk
 
-WILDROID_MULTIPRODUCT_AOSP_PRODUCTMK := device/virt/virtio_arm64/aosp_virtio_arm64only_go.mk
+WILDROID_MULTIPRODUCT_AOSP_PRODUCTMK := device/virt/virtio_arm64only/aosp_virtio_arm64only_go.mk
 WILDROID_MULTIPRODUCT_IS_GO := true
 WILDROID_MULTIPRODUCT_IS_WIFIONLY := true
 WILDROID_MULTIPRODUCT_NAME := virtio_arm64only_go
