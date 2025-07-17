@@ -64,6 +64,14 @@ function wildroid_identify_distribution() {
             export WILDROID_ANDROID_QPR="2"
             return 0
         fi
+    elif [ -d "vendor/miku" ]; then
+        if [ -f "vendor/miku/release/release_configs/bp2a.textproto" ]; then
+            export WILDROID_DISTRIBUTION="MikuUI-Blooming"
+            export WILDROID_DISTRIBUTION_NAME="MikuUI"
+            export WILDROID_ANDROID_VERSION="16"
+            export WILDROID_ANDROID_QPR="0"
+            return 0
+        fi
     else
         if [ -f "build/release/release_configs/bp2a.textproto" ]; then
             export WILDROID_DISTRIBUTION="AOSP-16"
