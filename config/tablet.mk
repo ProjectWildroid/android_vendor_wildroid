@@ -5,6 +5,8 @@
 
 ifeq ($(WILDROID_DISTRIBUTION_NAME),AOSP)
 
+$(call inherit-product, $(SRC_TARGET_DIR)/product/window_extensions.mk)
+
 # Overlays
 PRODUCT_PACKAGE_OVERLAYS += vendor/wildroid/overlay/tablet
 
