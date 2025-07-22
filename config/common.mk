@@ -5,5 +5,6 @@
 
 # Debugging
 PRODUCT_PACKAGES_DEBUG += \
+    fbkeyboard \
     wildroid-console.rc \
     wildroid-console.rc.recovery
