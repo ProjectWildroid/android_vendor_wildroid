@@ -1,0 +1,9 @@
+#
+# SPDX-FileCopyrightText: The Wildroid Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+# Debugging
+PRODUCT_PACKAGES_DEBUG += \
+    wildroid-console.rc \
+    wildroid-console.rc.recovery

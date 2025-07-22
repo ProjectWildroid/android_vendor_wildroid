@@ -3,6 +3,8 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+$(call inherit-product, vendor/wildroid/config/common.mk)
+
 ifeq ($(WILDROID_DISTRIBUTION_NAME),AOSP)
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/window_extensions.mk)
