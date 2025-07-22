@@ -1,0 +1,12 @@
+//
+// SPDX-FileCopyrightText: The Wildroid Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+prebuilt_etc {
+    name: "wildroid-console.rc",
+    srcs: ["wildroid-console.rc"],
+    sub_dir: "init",
+    recovery_available: true,
+    system_ext_specific: true,
+}
