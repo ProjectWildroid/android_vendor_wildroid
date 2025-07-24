@@ -31,6 +31,8 @@ LOCAL_MIKU_PRODUCT_MK_FILENAME := $(subst $(space),,$(LOCAL_MIKU_PRODUCT_MK_FILE
 
 $(call inherit-product, vendor/miku/build/product/$(LOCAL_MIKU_PRODUCT_MK_FILENAME))
 
+$(call inherit-product, vendor/wildroid/config/common.mk)
+
 PRODUCT_NAME := miku_$(WILDROID_MULTIPRODUCT_NAME)
 
 $(call enforce-product-packages-exist,product_manifest.xml rild Calendar Launcher3 Launcher3Go Launcher3QuickStep Launcher3QuickStepGo android.hidl.memory@1.0-impl.vendor vndk_apex_snapshot_package)

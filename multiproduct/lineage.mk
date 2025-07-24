@@ -48,6 +48,8 @@ LOCAL_LINEAGE_PRODUCT_MK_FILENAME := $(subst $(space),,$(LOCAL_LINEAGE_PRODUCT_M
 
 $(call inherit-product, vendor/lineage/config/$(LOCAL_LINEAGE_PRODUCT_MK_FILENAME))
 
+$(call inherit-product, vendor/wildroid/config/common.mk)
+
 PRODUCT_NAME := lineage_$(WILDROID_MULTIPRODUCT_NAME)
 
 $(call enforce-product-packages-exist,product_manifest.xml rild Calendar android.hidl.memory@1.0-impl.vendor vndk_apex_snapshot_package)
