@@ -8,3 +8,8 @@ PRODUCT_PACKAGES_DEBUG += \
     fbkeyboard \
     wildroid-console.rc \
     wildroid-console.rc.recovery
+
+# Utilities
+PRODUCT_PACKAGES += \
+    lpsetro \
+    lpsetro.recovery
