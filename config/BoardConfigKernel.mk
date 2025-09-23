@@ -61,6 +61,8 @@
 #                                          is in PATH
 #   USE_CCACHE                         = Enable ccache (global Android flag)
 
+include vendor/wildroid/build/core/utils.mk
+
 BUILD_TOP := $(abspath .)
 
 TARGET_AUTO_KDIR := $(shell echo $(TARGET_DEVICE_DIR) | sed -e 's/^device/kernel/g')
@@ -79,24 +81,14 @@ TARGET_KERNEL_VERSION ?= $(shell echo $(KERNEL_VERSION)"."$(KERNEL_PATCHLEVEL))
 
 # 5.10+ can fully compile without GCC by default
 ifneq ($(KERNEL_VERSION),)
-    ifeq ($(shell expr $(KERNEL_VERSION) \>= 6), 1)
+    ifeq ($(call is-version-greater-or-equal,$(TARGET_KERNEL_VERSION),5.10),true)
         TARGET_KERNEL_NO_GCC ?= true
-    else ifeq ($(shell expr $(KERNEL_VERSION) \>= 5), 1)
-        ifeq ($(shell expr $(KERNEL_PATCHLEVEL) \>= 10), 1)
-            TARGET_KERNEL_NO_GCC ?= true
-        endif
     endif
 endif
 
 # 6.11+ can no longer use aosp glibc sysroot headers (too old)
 ifneq ($(KERNEL_VERSION),)
-    ifeq ($(shell expr $(KERNEL_VERSION) \< 6), 1)
-        # empty
-    else ifeq ($(KERNEL_VERSION), 6)
-        ifeq ($(shell expr $(KERNEL_PATCHLEVEL) \>= 11), 1)
-            TARGET_KERNEL_LIBC_SYSROOT_USE ?= host
-        endif
-    else
+    ifeq ($(call is-version-greater-or-equal,$(TARGET_KERNEL_VERSION),6.11),true)
         TARGET_KERNEL_LIBC_SYSROOT_USE ?= host
     endif
 endif
@@ -117,7 +109,7 @@ else
 endif
 TARGET_KERNEL_CLANG_PATH ?= $(BUILD_TOP)/prebuilts/clang/host/$(HOST_PREBUILT_TAG)/$(KERNEL_CLANG_VERSION)
 
-TARGET_KERNEL_RUST_VERSION ?= 1.73.0c
+TARGET_KERNEL_RUST_VERSION ?= $(RUST_AOSP_PREBUILTS_VERSION)
 
 ifneq ($(USE_CCACHE),)
     ifneq ($(CCACHE_EXEC),)
@@ -278,7 +270,7 @@ ifneq ($(TARGET_KERNEL_CLANG_COMPILE), false)
 endif
 
 # Pass prebuilt LZ4 path
-KERNEL_MAKE_FLAGS += LZ4=/usr/bin/lz4
+KERNEL_MAKE_FLAGS += LZ4=$(BUILD_TOP)/prebuilts/kernel-build-tools/linux-x86/bin/lz4
 
 # Since Linux 4.16, flex and bison are required
 KERNEL_MAKE_FLAGS += LEX=$(BUILD_TOP)/prebuilts/build-tools/$(HOST_PREBUILT_TAG)/bin/flex
@@ -295,4 +287,8 @@ OUT_DIR_PREFIX := $(shell echo $(OUT_DIR) | sed -e 's|/target/.*$$||g')
 KERNEL_BUILD_OUT_PREFIX :=
 ifeq ($(OUT_DIR_PREFIX),out)
     KERNEL_BUILD_OUT_PREFIX := $(BUILD_TOP)/
+endif
+
+ifneq ($(TARGET_KERNEL_PLATFORM_TARGET),)
+KERNEL_PATH := $(abspath $(BUILD_TOP)/../kernel-$(TARGET_KERNEL_VERSION))
 endif
