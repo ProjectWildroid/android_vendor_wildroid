@@ -12,6 +12,14 @@ WILDROID_MULTIPRODUCT_SKIP_DISTROS := lineage
 WILDROID_MULTIPRODUCT_TYPE := pc
 include vendor/wildroid/multiproduct/AndroidProductsHelper.mk
 
+WILDROID_MULTIPRODUCT_AOSP_PRODUCTMK := device/pc/generic_x86_64_pc/aosp_generic_x86_64_pc.mk
+WILDROID_MULTIPRODUCT_IS_GO := false
+WILDROID_MULTIPRODUCT_IS_WIFIONLY := true
+WILDROID_MULTIPRODUCT_NAME := generic_x86_64_pc
+WILDROID_MULTIPRODUCT_SIZE := full
+WILDROID_MULTIPRODUCT_TYPE := pc
+include vendor/wildroid/multiproduct/AndroidProductsHelper.mk
+
 WILDROID_MULTIPRODUCT_AOSP_PRODUCTMK := device/virt/vboxware/aosp_vboxware.mk
 WILDROID_MULTIPRODUCT_IS_GO := false
 WILDROID_MULTIPRODUCT_IS_WIFIONLY := true
