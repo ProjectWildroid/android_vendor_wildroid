@@ -32,6 +32,7 @@ LOCAL_VARS_SUFFIX_LIST := \
     SIZE \
     IS_GO \
     IS_WIFIONLY \
+    SKIP_DISTROS \
     NAME # must keep this at last
 
 $(foreach distro,$(LOCAL_DISTROS_TO_ADD),\
